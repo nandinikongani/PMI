@@ -1,0 +1,56 @@
+{% extends 'doctorbase.html' %}
+{% load static %}
+
+{% block contents %}
+
+<section id="intro" class="clearfix">
+    <div class="container d-flex h-100">
+      <div class="row justify-content-center align-self-center">
+        <div class="col-md-6 intro-info order-md-first order-last">
+
+            <form action="/doctorfinalreport/" method="post">
+                {% csrf_token %}
+                {% for i in object %}
+
+            <tr>
+               name <td style="color:darkolivegreen"><input type="text" name="t1" value="{{i.name}}" readonly> </td><br>
+               bid    <td style="color:brown"><input type="text" name="bid" value="{{i.bid}}" readonly></td><br>
+              age  <td style="color:brown"><input type="text" name="age" value="{{i.age}}" readonly></td><br>
+             gender<td style="color:brown"><input type="text" name="gender" value="{{i.gender}}" readonly></td><br>
+               ldh<select name="ldh">
+                    <option>220</option>
+                    <option>250</option>
+                    <option>240</option>
+            </select></br>
+              ast<select name="ast">
+                    <option>220</option>
+                    <option>250</option>
+                    <option>230</option>
+            </select></br>
+            triglycerides<select name="triglycerides">
+                    <option>60</option>
+                    <option>70</option>
+                    <option>80</option>
+            </select></br>
+            phlevel<select name="phlevel">
+                    <option>7</option>
+                    <option>5</option>
+                    <option>4</option>
+                    <option>2</option>
+            </select></br>
+                <td style="color:brown"><input type="submit"  value="submit" ></td>
+                {% endfor %}
+
+</tr>
+            </form>
+        </div>
+
+        <div class="col-md-6 intro-img order-md-last order-first">
+          <img src="{% static 'img/intro-img.svg' %}" alt="" class="img-fluid">
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+{% endblock %}
